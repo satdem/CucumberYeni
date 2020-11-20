@@ -73,4 +73,62 @@ Senaryo ;
 
   - Sonra Yukarıdaki Senaryoyu Gherkin dilinde yazdık.
 
+projeden aldım belki sonra lazım olur*********************
+/*
+    public void editTheTableData(String textToBeSearched) {
+        WebElement row = getTableRowWithText(textToBeSearched);
+        if (!isEnabled(TableButtonDialogEditDelete)) {
+            row.findElement(TableButtonDialogEditDelete).click();
+            clickTo(TableButtonEdit);
+        } else {
+            row.findElement(TableButtonEdit).click();
+        }
+        waitToBeEnableFor(DialogContainer);
+    }
+*/
+// senaryo navigasyon ekleme
+ @When("^the browser size is \"([^\"]*)\"$")
+    public void theBrowserSizeIs(String browserSize)  {
+        BrowserSize size = BrowserSize.valueOf(browserSize);
+        hp.setBrowserSizeTo(size);
+    }
 
+    @Then("^user should navigate to the following links on menu$")
+    public void userNavigateToTheFollowingLinksOnMenu(DataTable dataTable) {
+        List<String> list = dataTable.asList(String.class);
+        for (String linkText : list) {
+            NavBarObjects link = NavBarObjects.valueOf(linkText);
+            hp.clickOnMenuTo(link);
+        }
+    }
+
+    @And("^user logout from basqar$")
+    public void userLogout() {
+        hp.logout();
+    }
+    // edit ekleme
+     public void edit(String name){
+            editTheTableData(name);
+            clickToDialogButton(Save);
+            clickToDialogButton(Close);
+        }
+
+    //feature ekleme
+
+     Scenario Outline: navigate on menu with different browser size
+        When the browser size is "<browserSize>"
+
+        Then user should navigate to the following links on menu
+          | Countries         |
+          | SalaryConstants   |
+          | Dashboard         |
+          | Subjects          |
+          | Dashboard         |
+          | ExcelTemplate     |
+          | CostCenters       |
+
+        Examples:
+          | browserSize |
+          | big         |
+          | half        |
+          | max         |
