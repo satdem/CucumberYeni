@@ -19,7 +19,7 @@ Feature: Nationalities functionality
     Then User delete the "os11"
     Then Success message should be displayed
 
-  @SmokeTest @RegressionTest
+   @RegressionTest
   Scenario: Nationalities All functionality
     Then Create a Nationality name as "isc666"
     Then Success message should be displayed

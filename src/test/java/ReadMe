@@ -132,3 +132,16 @@ projeden aldım belki sonra lazım olur*********************
           | big         |
           | half        |
           | max         |
+
+          //buget senaryo update bölümü
+          #      When User navigate to budget accounts page
+          #      And User update the budget accounts "sati123"
+          #        | name               | sati124 |
+          #        | code               | 1234    |
+          #        | category           | 4       |
+          #        | type               | Detail  |
+          #        | parentAccountCode  | 1       |
+          #        | closingAccountCode | 10      |
+          #        | balanceType        | Credit  |
+          #        | integrationCodes   | 1       |
+          #        | currency           | EUR     |
